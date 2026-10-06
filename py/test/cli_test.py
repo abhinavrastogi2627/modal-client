@@ -3738,7 +3738,7 @@ def test_create_environment_name_invalid(servicer, set_env_client, name):
     )
 
 
-@pytest.mark.parametrize("name", ["main", "main_-123."])
+@pytest.mark.parametrize("name", ["main", "main_-123.", "a", "Z", "0"])
 def test_create_environment_name_valid(servicer, set_env_client, name):
     assert (
         "Environment created"
@@ -3812,7 +3812,10 @@ def test_update_environment_name_invalid(servicer, set_env_client, name, set_nam
     )
 
 
-@pytest.mark.parametrize(("name", "set_name"), (("main", "main_-123."), ("main:main", "main2")))
+@pytest.mark.parametrize(
+    ("name", "set_name"),
+    (("main", "main_-123."), ("main:main", "main2"), ("main", "a"), ("main", "Z"), ("main", "0")),
+)
 def test_update_environment_name_valid(servicer, set_env_client, name, set_name):
     assert (
         "Environment updated"

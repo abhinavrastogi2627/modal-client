@@ -33,7 +33,7 @@ def is_valid_environment_name(name: str) -> bool:
     # to environments can be resolved by either name or ID unambiguously.
     return (
         len(name) <= 64
-        and re.match(r"^[a-zA-Z0-9][a-zA-Z0-9-_.]+$", name) is not None
+        and re.match(r"^[a-zA-Z0-9][a-zA-Z0-9-_.]*$", name) is not None
         and not name.lower().startswith("en-")
     )
 
